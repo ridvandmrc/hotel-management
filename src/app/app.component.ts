@@ -12,9 +12,9 @@ export class AppComponent implements OnInit {
   constructor(private hotelService: HotelService) {}
 
   ngOnInit(): void {
-    this.hotelService.getHotels().subscribe((data) => {
+   /*  this.hotelService.getHotels().subscribe((data) => {
       console.log(data) // data will be here, we will pass to table.component
-    })
+    }) */
   }
 
   onInputChange(data: string) {

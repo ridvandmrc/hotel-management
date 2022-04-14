@@ -57,13 +57,14 @@ export class TableComponent implements OnInit, OnChanges {
   ngOnChanges() {
     console.log('selected: ', this.selectedRate)
     this.dataSource.filter = this.filteredData.trim().toLocaleLowerCase()
+
   }
 
   selectChange(event: MatSelectChange) {
     this.selectedRate = event.value
 
     this.dataSource.filter = this.selectedRate.trim().toLocaleLowerCase()
-    console.log('event', event.value)
+    console.log('filtered data: ',this.dataSource.filteredData)
   }
 
   counter(i: number) {
