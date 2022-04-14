@@ -8,21 +8,18 @@ import {
 } from '@angular/core'
 import { MatSelectChange } from '@angular/material/select'
 import { MatTableDataSource } from '@angular/material/table'
+import {Sort,MatSort} from '@angular/material/sort'
+import { HotelInformation } from 'src/app/model/Hotel'
 
-export interface HotelInformation {
-  name: string
-  desc: string
-  location: string
-  rate: number
-}
+
 
 const ELEMENT_DATA: HotelInformation[] = [
-  { rate: 1, name: 'Hydrogen', desc: 'Hotel', location: 'Spain' },
-  { rate: 2, name: 'Helium', desc: 'Hotel', location: 'Italy' },
-  { rate: 3, name: 'Lithium', desc: 'Hotel', location: 'Turkey' },
-  { rate: 4, name: 'Beryllium', desc: 'Hotel', location: 'Malta' },
-  { rate: 5, name: 'Boron', desc: 'Hotel', location: 'Gebze' },
-  { rate: 5, name: 'Boron 2', desc: 'Hotel', location: 'Gebze' },
+  { rate: 1, name: 'Hydrogen', description: 'Hotel', location: 'Spain' },
+  { rate: 2, name: 'Helium', description: 'Hotel', location: 'Italy' },
+  { rate: 3, name: 'Lithium', description: 'Hotel', location: 'Turkey' },
+  { rate: 4, name: 'Beryllium', description: 'Hotel', location: 'Malta' },
+  { rate: 5, name: 'Boron', description: 'Hotel', location: 'Gebze' },
+  { rate: 5, name: 'Boron 2', description: 'Hotel', location: 'Gebze' },
 ]
 
 @Component({
@@ -32,15 +29,15 @@ const ELEMENT_DATA: HotelInformation[] = [
 })
 export class TableComponent implements OnInit, OnChanges {
   selectedRate: string = '1'
-  displayedColumns: string[] = ['name', 'desc', 'location', 'rate']
+  displayedColumns: string[] = ['name', 'description', 'location', 'rate']
   dataSource = new MatTableDataSource(ELEMENT_DATA)
 
-  /* @ViewChild(MatSort) sort: MatSort; */
+  @ViewChild(MatSort) sort: MatSort;
   @Input() filteredData: string = ''
 
-  /* ngAfterViewInit() {
+  ngAfterViewInit() {
     this.dataSource.sort = this.sort;
-  } */
+  }
 
   ngOnInit(): void {
     this.dataSource.filterPredicate = function customFilter(data, filter) {
@@ -55,7 +52,6 @@ export class TableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log('selected: ', this.selectedRate)
     this.dataSource.filter = this.filteredData.trim().toLocaleLowerCase()
 
   }
@@ -64,7 +60,6 @@ export class TableComponent implements OnInit, OnChanges {
     this.selectedRate = event.value
 
     this.dataSource.filter = this.selectedRate.trim().toLocaleLowerCase()
-    console.log('filtered data: ',this.dataSource.filteredData)
   }
 
   counter(i: number) {

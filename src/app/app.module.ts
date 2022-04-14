@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatInputModule } from '@angular/material/input'
 import { MatTableModule } from '@angular/material/table'
 import { MatSelectModule } from '@angular/material/select'
-
+import { MatSortModule } from '@angular/material/sort'
 @NgModule({
   declarations: [AppComponent, ...COMPONENT],
   imports: [
@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select'
     MatTableModule,
     MatSelectModule,
     HttpClientModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
